@@ -1,0 +1,19 @@
+version: '3.8'
+
+# ======================
+#       SERVICES
+# ======================
+
+services:
+  php: 
+    image: mrtonyhuynh/php-fpm
+    environment:
+      TIMEZONE: Asia/Ho_Chi_Minh
+    volumes:
+      - ./conf.d/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./conf.d/php-ini-overrides.ini:/usr/local/etc/php/conf.d/php-ini-overrides.ini
+    configs:
+      - source: php_fpm_conf
+        target: /usr/local/etc/php-fpm.d/www.conf
+      - source: php_ini_overrides
+        target: /usr/local/etc/php/conf.d/php-ini-overrides.ini
