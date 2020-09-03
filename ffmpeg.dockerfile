@@ -11,6 +11,8 @@ ARG     PHPREDIS_VERSION="${PHPREDIS_VERSION:-5.3.1}"
 ENV     PHPREDIS_VERSION="${PHPREDIS_VERSION}"
 ADD     https://github.com/phpredis/phpredis/archive/${PHPREDIS_VERSION}.tar.gz /tmp/
 
+RUN     apk add --no-cache ffmpeg
+
 RUN     set -x                           && \
         apk update                       && \
         apk upgrade                      && \
